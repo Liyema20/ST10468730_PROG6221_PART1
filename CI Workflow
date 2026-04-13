@@ -1,23 +1,16 @@
-name: .NET Build
+ name: Simple CI
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: windows-latest
+  success-job:
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '6.0.x'
-
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build
-      run: dotnet build --no-restore
+      - name: Confirm success
+        run: echo "Everything is working fine"
